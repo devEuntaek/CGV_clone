@@ -1,40 +1,21 @@
-package com.CGV_clone.CGV_clone.domain;
+package com.CGV_clone.CGV_clone.DTO;
 
-import jakarta.persistence.*;
+import org.springframework.cglib.core.Local;
+
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
 import java.util.List;
 
-@Entity
-@Table(name = "movies")
-public class Movie {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id; // DB 내부에서 사용할 고유 식별자
-
-    private Long movieId; // TMDB에서의 고유 영화 ID
-    private String title; // 제목
-    private String originalLanguage; // 원본 언어
-    @Column(columnDefinition = "LONGTEXT")
-    private String overview; // 줄거리
-    private String posterPath; // 포스터 경로
-    private LocalDate releaseDate; // 개봉일
-    private Double voteAverage; // 평균 평점
-    @ElementCollection
-    private List<Integer> genreIds; // 장르 ID 목록
-    private Boolean adult; // 성인 영화 여부
+public class MovieDto {
+    private Long id;
+    private String title;
+    private String originalLanguage;
+    private String overview;
+    private String posterPath;
+    private LocalDate releaseDate;
+    private Double voteAverage;
+    private List<Integer> genreIds;
 
     // Getters and Setters
-
-    public Long getMovieId() {
-        return movieId;
-    }
-
-    public void setMovieId(Long movieId) {
-        this.movieId = movieId;
-    }
-
     public Long getId() {
         return id;
     }
@@ -83,7 +64,6 @@ public class Movie {
         this.releaseDate = releaseDate;
     }
 
-
     public Double getVoteAverage() {
         return voteAverage;
     }
@@ -99,13 +79,4 @@ public class Movie {
     public void setGenreIds(List<Integer> genreIds) {
         this.genreIds = genreIds;
     }
-
-    public Boolean getAdult() {
-        return adult;
-    }
-
-    public void setAdult(Boolean adult) {
-        this.adult = adult;
-    }
 }
-

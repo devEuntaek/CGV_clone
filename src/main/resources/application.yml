@@ -15,10 +15,14 @@ spring:
         jdbc:
           time_zone: Asia/Seoul
 
+
   servlet:
     multipart:
       max-file-size: 10MB
       max-request-size: 100MB
+
+tmdb:
+  api-key: d65e67dc5c2523e8aa5fed7c517b9084
 
 #    database-platform:
 #    Upload file Setting
