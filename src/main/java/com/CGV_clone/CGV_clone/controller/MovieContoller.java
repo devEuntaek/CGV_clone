@@ -1,10 +1,12 @@
 package com.CGV_clone.CGV_clone.controller;
 
 import com.CGV_clone.CGV_clone.DTO.MovieDto;
+import com.CGV_clone.CGV_clone.DTO.MovieMainDto;
 import com.CGV_clone.CGV_clone.domain.Movie;
 import com.CGV_clone.CGV_clone.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -16,13 +18,10 @@ public class MovieContoller {
     @Autowired
     private MovieService movieService;
 
-    // 영화 목록 조회 (DB에서)
-//    @GetMapping("/popular")
-//    public List<Movie> getPopularMovies() {
-//        return movieService.getPopularMovies();
-//    }
+
+
     // 인기 영화 리스트 가져오기 (프론트로 보낼 데이터)
-    @GetMapping("/movies/popular")
+    @GetMapping("/popular")
     public List<MovieDto> getPopularMovies() {
         return movieService.getPopularMovies().stream().map(movie -> {
             MovieDto dto = new MovieDto();
@@ -56,12 +55,6 @@ public class MovieContoller {
         return movieService.saveMovie(movie);
     }
 
-    // 영화 저장 (복수 배열 저장)  -> 아직 안 됨 아마 고유 Id 문제
-//    @PostMapping("/bulk")
-//    public List<Movie> saveMovies(@RequestBody List<Movie> movies) {
-//        return movieService.saveMovies(movies);
-//    }
-
 
     // 영화 삭제
     @DeleteMapping("/{id}")
@@ -69,4 +62,9 @@ public class MovieContoller {
         movieService.deleteMovie(id);
     }
 
+    // 영화 저장 (복수 배열 저장)  -> 아직 안 됨 아마 고유 Id 문제
+//    @PostMapping("/bulk")
+//    public List<Movie> saveMovies(@RequestBody List<Movie> movies) {
+//        return movieService.saveMovies(movies);
+//    }
 }
